@@ -1,0 +1,21 @@
+{
+  "name": "@@project-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "shjs build.coffee"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "body-parser": "^1.10.0",
+    "dotenv": "^0.4.0",
+    "express": "^4.10.6",
+    "mongoose": "^3.8.24",
+    "request": "^2.51.0",
+    "require-dir": "^0.1.0",
+    "resourcejs": "^0.1.12",
+    "socket.io": "^1.3.4",
+    "winston": "^0.8.3",
+    "socket-sauce-rest-api":"git://github.com/biofractal/socket-sauce-rest-api.git"
+  }
+}

@@ -1,0 +1,16 @@
+.container
+	h2 Users
+	table.table.table-bordered
+		tr.info
+			th ID
+			th Name
+			th Age
+			th
+		tr(ng-repeat="user in users track by user._id")
+			td {{user._id}}
+			td {{user.name}}
+			td {{user.age}}
+			td
+				button.btn.btn-primary(ng-click="$state.go('root.user', {id:user._id})")
+					|View User
+
