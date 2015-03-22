@@ -14,7 +14,7 @@ if args.location.indexOf('Development\\make') > -1
 	exit 0
 
 target = "#{args.location}\\#{args.name}"
-source = "X:\\Development\\make\\files"
+source = "X:\\Development\\biofractal\\socket-sauce-seed\\files"
 
 if test '-d', target
 	console.log "Fatal Error: The folder: '#{target}' already exists. Please delete or move it and try again."
