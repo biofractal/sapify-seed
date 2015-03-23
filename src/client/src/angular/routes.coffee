@@ -23,8 +23,9 @@ angular
 			url:'user/:id'
 			resolve: user:($stateParams, proxy)->
 				proxy.user.getById $stateParams.id
-			controller: ($scope, proxy, user)->
+			controller: ($scope, sync, proxy, user)->
 				$scope.user = user
+				sync.watch $scope
 				$scope.changeAge=(user, delta)->
 					proxy.user.changeAge user._id, user.age, delta
 					.then (user)->

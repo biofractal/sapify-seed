@@ -12,5 +12,7 @@ base = args['rawArgs'][1]
 args.base = "#{base.slice 0, base.lastIndexOf '\\'}"
 args.source = "#{args.base}\\src"
 args.target = "#{args.location}\\#{args.name}"
+args.apiBuild = "#{args.target}\\api\\build"
+args.clientBuild = "#{args.target}\\client\\build
 
 module.exports = args
