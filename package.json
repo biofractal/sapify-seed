@@ -1,0 +1,27 @@
+{
+  "name": "socket-sauce-seed",
+  "version": "1.0.0",
+  "description": "A seed project and make file to generate a complete startup Angular + Express proxy + strict REST micro-api all glued together with the socket-sauce suite.",
+  "scripts": {
+    "make": "shjs make.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biofractal/socket-sauce-seed.git"
+  },
+  "keywords": [
+    "socket.io",
+    "REST"
+  ],
+  "author": "biofractal <biofractal@gmail.com> (https://github.com/biofractal)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/biofractal/socket-sauce-seed/issues"
+  },
+  "homepage": "https://github.com/biofractal/socket-sauce-seed",
+  "dependencies": {
+    "commander": "^2.7.1",
+    "exit": "^0.1.2",
+    "mongodb": "^2.0.23"
+  }
+}

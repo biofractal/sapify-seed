@@ -1,73 +1,33 @@
 require 'shelljs/global'
-args = require 'commander'
+args = require './util/arguments'
+print = require './util/print'
+files = require './util/files'
+packages = require './util/packages'
 
-args
-	.version('0.0.1')
-	.option('-n, --name [name]', 'The name of your project', 'project')
-	.option('-a, --api [api]', 'The port used by the api', '3000')
-	.option('-p, --proxy [proxy]', 'The port used by the proxy', '3001')
-	.option('-l, --location [location]', 'The project folder will be placed here. The default is the current location.', pwd())
-	.parse(process.argv)
-
-if args.location.indexOf('Development\\make') > -1
-	console.log 'Fatal Error: You are about to try and make a project inside the "make" folder. This can lead to a recursive folder hierarchy'
-	exit 0
-
-target = "#{args.location}\\#{args.name}"
-source = "X:\\Development\\biofractal\\socket-sauce-seed\\files"
-
-if test '-d', target
-	console.log "Fatal Error: The folder: '#{target}' already exists. Please delete or move it and try again."
-	exit 0
-
-console.log "-------------------"
-console.log "Name: #{args.name}"
-console.log "API:"
-console.log "   port: #{args.api}"
-console.log "   path: #{target}\\api"
-console.log "Client:"
-console.log "   port: #{args.proxy}"
-console.log "   path: #{target}\\client"
-console.log "-------------------"
-console.log ""
-console.log "copying files to: #{target}"
-mkdir '-p', target
-cp '-r',"#{source}\\*", target
-
-console.log "replacing name and ports in project files"
-files = find(target).filter (file)->
-	file.match(/\.env$/) or
-	file.match(/\.coffee$/) or
-	file.match(/\.jade$/) or
-	file.match(/\.json$/) or
-	file.match(/\.md$/)
-
-for file in files
-	sed '-i', '@@project', args.name, file
-	sed '-i', '@@proxy', args.proxy, file
-	sed '-i', '@@api', args.api, file
-console.log "-------------------"
-
-cd target
-
-installModules=(pm, target)->
-	console.log find and "Installing #{pm} modules ..."
-	child = exec "#{pm} install", {async:true}
-	child.stderr.on 'data', (data)-> console.log 'stderr', data
-	child.on 'close', (code) ->
-		if code is 0
-			console.log "----------------------------------------"
-			console.log "#{target} #{pm} modules successfully installed!"
-			console.log "----------------------------------------"
+#check project location is valid
+if args.location is args.base
+	print.error 'You are trying to make a project inside the socket-sauce-seed source folder.'
+else if  test '-d', args.target
+	print.error "The folder: '#{args.target}' already exists. Please delete or move it and try again."
+else
+	#generate the mongodb and some test user data
+	exec("mongo localhost:27017/#{args.name} #{args.base}\\util\\mongodb.js", {async:true})
+	.on 'close', (code)->
+		if code isnt 0
+			print.error "Mongo test data could not be generated. Please make sure you have mgod listening on localhost:27017"
+		else
+			#copy all the source files and do token replacements
+			files.copySource()
+			files.replaceTokens()
+			#install npm and bower packages
+			packages.install ->
+				#open sublime
+				cd args.target
+				exec "sublime_text .", {async:true}
+				#build and run project components
+				cd "#{args.target}\\api\\"
+				require "#{args.target}\\api\\build"
+				cd "#{args.target}\\client\\"
+				require "#{args.target}\\client\\build"
 
 
-cd 'api'
-installModules 'npm', 'API'
-cd '..'
-
-cd 'client'
-installModules 'npm', 'Client'
-installModules 'bower', 'Client'
-cd '..'
-
-exec "sublime_text .", {async:true}
