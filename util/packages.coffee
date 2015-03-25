@@ -10,12 +10,15 @@ installPackageModules=(pm, template, next)->
 	child = exec "#{pm} install", {async:true}
 	child.stderr.on 'data', (data)-> console.log 'stderr', data
 	child.on 'close', (code) ->
-		if code is 0
-				print.installed pm, template
+		if code isnt 0
+			print.error "The #{pm} packages for #{template} failed with code: #{code}"
+		else
+			print.installed pm, template
 			syncCount--
 			if syncCount is 0
-				print.finished args, args.target if syncCount is 0
+				print.finished() if syncCount is 0
 				next()
+
 
 module.exports=
 

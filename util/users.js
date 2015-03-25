@@ -1,10 +1,10 @@
 var insertUser
 insertUser = function(name, age) {
-  return db.users.insert({
-    name: 'name',
-    age: age,
-    __v: 0
-  });
+	return db.users.insert({
+		name: name,
+		age: age,
+		__v: 0
+	});
 };
 db.users.drop();
 insertUser('brian', 42);

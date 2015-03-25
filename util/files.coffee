@@ -18,6 +18,14 @@ module.exports=
 			file.match(/\.json$/) or
 			file.match(/\.md$/)
 		for file in files
-			sed '-i', '@@project', args.name, file
-			sed '-i', '@@proxy', args.proxy, file
-			sed '-i', '@@api', args.api, file
+			sed '-i', '@@project', args.projectName, file
+			sed '-i', '@@proxy', args.proxyPort, file
+			sed '-i', '@@api', args.apiPort, file
+
+	build:(path)->
+		cd path
+		require "#{path}\\build"
+
+	open:(path)->
+		cd path
+		exec "sublime_text .", {async:true}

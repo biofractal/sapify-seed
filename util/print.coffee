@@ -1,20 +1,21 @@
 require 'shelljs/global'
+args = require './arguments'
 safeExit = require 'exit'
 
 module.exports =
 
-	finished:(args, target)->
+	finished:(target)->
 		console.log ""
-		console.log "Name  : #{args.name}"
-		console.log "DB    : mongodb://localhost:27017/#{args.name}"
+		console.log "Name  : #{args.projectName}"
+		console.log "DB    : mongodb://localhost:27017/#{args.projectName}"
 		console.log ""
 		console.log "api"
-		console.log "  port: #{args.api}"
-		console.log "  path: #{target}\\api"
+		console.log "  port: #{args.apiPort}"
+		console.log "  path: #{args.target}\\api"
 		console.log ""
 		console.log "client"
-		console.log "  port: #{args.proxy}"
-		console.log "  path: #{target}\\client"
+		console.log "  port: #{args.proxyPort}"
+		console.log "  path: #{args.target}\\client"
 		console.log ""
 		console.log "--------------------------------------"
 		console.log "        Finished Successfully!"
