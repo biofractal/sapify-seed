@@ -4,7 +4,7 @@ mongoose = require 'mongoose'
 bodyParser = require 'body-parser'
 winston = require 'winston'
 errorService = require './error'
-sockets = require 'socket-sauce-rest-api'
+sockets = require 'socket-sauce-api'
 
 
 #app
