@@ -5,7 +5,7 @@ A seed project and make file to generate a complete startup Angular + Express pr
 The project combines and demonstrates the following packages:
 - [socket-sauce-angular](https://github.com/biofractal/socket-sauce-angular)
 - [socket-sauce-proxy](https://github.com/biofractal/socket-sauce-proxy)
-- [socket-sauce-angular](https://github.com/biofractal/socket-sauce-angular)
+- [socket-sauce-api](https://github.com/biofractal/socket-sauce-api)
 
 ### What is this repository for? ###
 
