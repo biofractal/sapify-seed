@@ -1,4 +1,5 @@
 args = require 'commander'
+print = require './print'
 
 #gather commandline arguments
 args

@@ -22,6 +22,7 @@
   "dependencies": {
     "commander": "^2.7.1",
     "exit": "^0.1.2",
-    "mongodb": "^2.0.23"
+    "mongodb": "^2.0.23",
+    "socket-sauce-api": "file:C:\\Users\\Jonny\\AppData\\Local\\Temp\\npm-5200-f912cb3e\\git-cache-5810a361aa19\\1c935a1546d10423fa34f7294f01f125d538cfff"
   }
 }
