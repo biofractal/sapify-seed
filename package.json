@@ -1,13 +1,13 @@
 {
-  "name": "socket-sauce-seed",
+  "name": "sapify-seed",
   "version": "1.0.0",
-  "description": "A seed project and make file to generate a complete startup Angular + Express proxy + strict REST micro-api all glued together with the socket-sauce suite.",
+  "description": "A seed project and make file to generate a complete startup Angular + Express proxy + strict REST micro-api all glued together with the sapify package suite",
   "scripts": {
     "make": "shjs make.coffee"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/biofractal/socket-sauce-seed.git"
+    "url": "https://github.com/biofractal/sapify-seed.git"
   },
   "keywords": [
     "socket.io",
@@ -16,9 +16,9 @@
   "author": "biofractal <biofractal@gmail.com> (https://github.com/biofractal)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/biofractal/socket-sauce-seed/issues"
+    "url": "https://github.com/biofractal/sapify-seed/issues"
   },
-  "homepage": "https://github.com/biofractal/socket-sauce-seed",
+  "homepage": "https://github.com/biofractal/sapify-seed",
   "dependencies": {
     "commander": "^2.7.1",
     "exit": "^0.1.2",

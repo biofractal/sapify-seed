@@ -1,6 +1,6 @@
 # sapify-seed
 
-A seed project and make file to generate a complete startup Angular + Express proxy + strict REST micro-api all glued together with the socket-sauce suite.
+A seed project and make file to generate a complete startup Angular + Express proxy + strict REST micro-api all glued together with the sapify package suite.
 
 The project combines and demonstrates the following packages:
 - [sapify-client](https://github.com/biofractal/sapify-client)
